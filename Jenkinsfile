@@ -1,7 +1,7 @@
 pipeline {
         agent {
             docker {
-                image 'playwright-java:1.0'
+                image 'playwright-java:2.0'
                 reuseNode true
             }
         }
