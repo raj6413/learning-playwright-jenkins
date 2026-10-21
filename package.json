@@ -1,0 +1,41 @@
+{
+  "name": "learning_playwright",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx playwright test",
+    "test:chromium": "npx playwright test --project chromium",
+    "test:smoke": "npx playwright test --grep @smoke",
+    "test:local": "BASE_URL=http://localhost:4200 npx playwright test",
+    "test:report": "npx playwright test && npx playwright show-report",
+    "test:ui": "npx playwright test --ui",
+    "test:smoke:firefox": "npx playwright test --project firefox --grep @smoke",
+    "test:spec:webkit": "npx playwright test --plroject=webkit tests/UI-Test/happpy-path.spec.ts",
+    "test:headed": "npx playwright test --headed",
+    "test:debug": "npx playwright test --debug",
+    "smoke": "npx playwright test --grep @smoke",
+    "regression": "npx playwright test --grep @regression",
+    "chromium": "npx playwright test --project=chromium",
+    "firefox": "npx playwright test --project=firefox",
+    "webkit": "npx playwright test --project=webkit",
+    "allure": "npx allure serve reports/allure-results",
+    "report": "npx playwright show-report"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.61.0",
+    "@types/node": "^24.7.1",
+    "@typescript-eslint/eslint-plugin": "^8.65.0",
+    "@typescript-eslint/parser": "^8.65.0",
+    "dotenv": "^17.2.3",
+    "eslint": "^10.8.0",
+    "eslint-config-prettier": "^10.1.8",
+    "prettier": "^3.9.6"
+  },
+  "dependencies": {
+    "allure-playwright": "^3.10.2"
+  }
+}

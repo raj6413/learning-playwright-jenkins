@@ -1,0 +1,16 @@
+{
+    "login": [
+        {
+            "username": "admin@practicesoftwaretesting.com",
+            "password": "welcome01"
+        },
+        {
+            "username": "customer@practicesoftwaretesting.com",
+            "password": "welcome01"
+        },
+        {
+            "username": "customer2@practicesoftwaretesting.com",
+            "password": "welcome01"
+        }
+    ]
+}

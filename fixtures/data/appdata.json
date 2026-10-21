@@ -1,0 +1,20 @@
+{
+    "login": {
+        "username": "admin@practicesoftwaretesting.com",
+        "password": "welcome01"
+    },
+
+    "productCatagory": {
+        "hammer": "Hammer",
+        "pageTitle": "Practice Software Testing - Toolshop - v5.0"
+    },
+
+    "cardDetails":{
+        "cardNumber": "1234-5678-9012-3456",
+        "cvv": "345",
+        "expirationDate": "11/2027",
+        "cardHolderName": "Raj"
+    },
+
+    "successMessage": "Payment was successful"
+}
