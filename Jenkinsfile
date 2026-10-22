@@ -70,7 +70,7 @@ pipeline {
 
                     script {
                     currentBuild.displayName =
-         "#${env.BUILD_NUMBER} | ${params.BROWSERS} | ${params.ENV} | ${params.TAGS}"
+         "#${env.BUILD_NUMBER} | ${params.BROWSERS} | ${params.ENV} | ${params.SUITES}"
                     }
                 }
             }
