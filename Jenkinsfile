@@ -23,13 +23,13 @@ pipeline {
             string(
         name: 'BROWSERS',
         defaultValue: 'chromium',
-        description: 'Comma separated browsers. Example: chromium,firefox'
+        description: 'Comma separated browsers. Example: chromium,firefox,webkit'
     )
 
             string(
         name: 'SUITES',
         defaultValue: 'smoke',
-        description: 'Example: smoke,regression'
+        description: 'Example: smoke,regression,sanity'
     )
 
         choice(
@@ -107,7 +107,7 @@ pipeline {
                     .join('|')
 
                     sh """
-                    npx playwright test \
+                    npx playwright test tests/UI-Test/pom-test.spec.ts \
                     ${browserArgs} \
                     --grep "${grepPattern}"
                 """
