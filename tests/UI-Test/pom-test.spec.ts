@@ -17,7 +17,7 @@ test.describe("with Login", () => {
     await page.getByTestId("nav-home").waitFor({state: "visible"});
     await page.getByTestId("nav-home").click();
   });
-  test("test", async () => {
+  test("test @smoke", async () => {
     await page.locator('[alt="Combination Pliers"]').click();
     await page.getByTestId("add-to-cart").click();
     await page.getByTestId("nav-cart").click();
