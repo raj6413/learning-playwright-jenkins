@@ -89,6 +89,58 @@ pipeline {
                     }
                 }
             }
+    //      stage('Run Shards') {
+    //         parallel {
+    //             stage('Shard 1 of 3') {
+    //                 steps {
+    //                     sh '''
+    //                       PLAYWRIGHT_BLOB_OUTPUT_DIR=blob-report-shard-1 \
+    //                       TEST_OUTPUT_DIR=test-results-shard-1 \
+    //                       npx playwright test --shard=1/3 --workers=2
+    //                     '''
+    //                 }
+    //             }
+
+    //             stage('Shard 2 of 3') {
+    //                 steps {
+    //                     sh '''
+    //                       PLAYWRIGHT_BLOB_OUTPUT_DIR=blob-report-shard-2 \
+    //                       TEST_OUTPUT_DIR=test-results-shard-2 \
+    //                       npx playwright test --shard=2/3 --workers=2
+    //                     '''
+    //                 }
+    //             }
+
+    //             stage('Shard 3 of 3') {
+    //                 steps {
+    //                     sh '''
+    //                       PLAYWRIGHT_BLOB_OUTPUT_DIR=blob-report-shard-3 \
+    //                       TEST_OUTPUT_DIR=test-results-shard-3 \
+    //                       npx playwright test --shard=3/3 --workers=2
+    //                     '''
+    //                 }
+    //             }
+    //         }
+    //     }
+
+    //     stage('Merge Reports') {
+    //         steps {
+    //             sh '''
+    //               mkdir -p all-blob-reports
+
+    //               find blob-report-shard-1 \
+    //                    blob-report-shard-2 \
+    //                    blob-report-shard-3 \
+    //                    -name '*.zip' \
+    //                    -exec cp {} all-blob-reports/ \\;
+
+    //               npx playwright merge-reports \
+    //                 --reporter html \
+    //                 all-blob-reports
+    //             '''
+    //         }
+    //     }
+    // }
          stage('Run Tests') {
             steps {
                 script {

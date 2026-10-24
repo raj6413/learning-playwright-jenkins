@@ -1,5 +1,6 @@
 import { defineConfig, devices } from '@playwright/test';
-import dotenv from 'dotenv';
+import { config } from './config/envConfig';
+// import dotenv from 'dotenv';
 // import { read } from 'fs';
 /**
  * Read environment variables from file.
@@ -9,9 +10,9 @@ import dotenv from 'dotenv';
 // import path from 'path';
 // import { loadEnvConfig } from './config/envConfig';
 // const env = loadEnvConfig(process.env.TEST_ENV || 'qa'); // custom env loader
-dotenv.config({
-  path: `config/${process.env.ENV ?? 'qa'}.env`,
-});
+// dotenv.config({
+//   path: `config/${process.env.ENV ?? 'qa'}.env`,
+// });
 
 /**
  * See https://playwright.dev/docs/test-configuration.
@@ -19,23 +20,24 @@ dotenv.config({
 export default defineConfig({
   testDir: './tests',
   timeout: 30 * 1000,
-  globalTimeout: 5 * 60 * 1000,  // 5 minutes
+  globalTimeout: 15 * 60 * 1000,  // 5 minutes
   /* Run tests in files in parallel */
-  fullyParallel: false,
+  fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
   forbidOnly: !!process.env.CI,
   /* Retry on CI only */
   retries: process.env.CI ? 1 : 0,
   /* Opt out of parallel tests on CI. */
-  workers: process.env.CI ? 1 : undefined,
+  // workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: [["line"], ["html", { open: "never" }], ["allure-playwright"]],
+  reporter: process.env.CI ? 'blob'
+    : [["line"], ["html", { open: "never" }], ["allure-playwright"]],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('')`. */
-    baseURL: process.env.baseUrl,
+    baseURL: config.ui.baseURL,
     trace: "on",
-    video: "on",
+    video: "on",  
     screenshot: "on",
     testIdAttribute: 'data-test'
   },
@@ -44,16 +46,17 @@ export default defineConfig({
   /* Configure projects for major browsers */
    projects: [
     {
-      name: "setup",
-      testMatch: /auth\.setup\.ts/,
+      // name: "setup",
+      // testMatch: /auth\.setup\.ts/,
+      // testIgnore: ['dataparam.spec.ts', 'example.spec.ts', 'happpy-path.spec.ts', 'learnPlaywright.spec.ts', 'pom-test.spec.ts'],
     },
     {
       name: "chromium",
-      dependencies: ['setup'],
+      // dependencies: ['setup'],
       use: { ...devices["Desktop Chrome"],
-        storageState: '.auth/cutomer01.json'
+        // storageState: '.auth/cutomer01.json'
        },
-       testIgnore: /auth\.setup\.ts/,
+      //  testIgnore: /auth\.setup\.ts/,
     }
 
     // {

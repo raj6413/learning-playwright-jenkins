@@ -1,0 +1,81 @@
+apiVersion: batch/v1
+kind: Job
+
+metadata:
+  name: playwright-${BROWSER}-${BUILD_NUMBER}
+  namespace: automation
+
+spec:
+  ttlSecondsAfterFinished: 3600
+  backoffLimit: 0
+
+  template:
+    spec:
+      restartPolicy: Never
+
+      volumes:
+        - name: reports
+          hostPath:
+            path: /reports
+
+      containers:
+        - name: playwright
+
+          # image: playwright-runner-kuber:latest
+          image: playwright-java:2.0
+
+          imagePullPolicy: Never
+
+          volumeMounts:
+                  - name: reports
+                    mountPath: /reports
+          workingDir: /app
+
+          command:
+            - sh
+            - -c
+            - |
+                browserArgs=$(echo "$BROWSERS" | tr ',' '\n' | sed 's/^/--project=/' | tr '\n' ' ')
+
+                grepPattern=$(echo "$SUITES" | tr ',' '\n' | sed 's/^/@/' | paste -sd'|' -)
+
+                echo "Running:"
+                echo "npx playwright test $browserArgs --grep \"$grepPattern\""
+
+                git clone https://github.com/rajatrc2042-lab/playwright-jenkins-docker.git
+                cd playwright-jenkins-docker
+                npm ci
+                npx playwright test $browserArgs --grep "$grepPattern"
+                mkdir -p /reports/${BUILD_NUMBER}/${BROWSER}
+
+                cp -r playwright-report /reports/${BUILD_NUMBER}/${BROWSER}/
+                cp -r allure-results /reports/${BUILD_NUMBER}/${BROWSER}/
+                cp -r test-results /reports/${BUILD_NUMBER}/${BROWSER}/
+                echo "===== DEBUG ====="
+                echo "PWD:"
+                pwd
+
+                echo "BUILD_NUMBER=$BUILD_NUMBER"
+                echo "BROWSERS=$BROWSERS"
+
+                echo "Current directory:"
+                ls -R .
+
+                echo "Reports folder:"
+                ls -R /reports || true
+
+                echo "Current build folder:"
+                ls -R /reports/${BUILD_NUMBER} || true
+
+          env:
+            - name: ENV
+              value: "${ENV}"
+
+            - name: BROWSERS
+              value: "${BROWSER}"
+
+            - name: SUITES
+              value: "${SUITE}"
+
+            - name: BUILD_NUMBER
+              value: "${BUILD_NUMBER}"

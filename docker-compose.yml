@@ -1,0 +1,47 @@
+version: "3.0"
+
+services:
+  jenkins1:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: jenkins-with-docker
+    container_name: jenkins-docker-compose-container1
+    ports:
+      - "8051:8080"
+      - "5051:5000"
+    volumes:
+      - jenkin-data:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
+    restart: unless-stopped
+  jenkins2:
+      build:
+        context: .
+        dockerfile: Dockerfile
+      image: jenkins-with-docker
+      container_name: jenkins-docker-compose-container2
+      ports:
+        - "8052:8080"
+        - "5052:5000"
+      volumes:
+        - jenkin-data:/var/jenkins_home
+        - /var/run/docker.sock:/var/run/docker.sock
+      restart: unless-stopped
+
+  jenkins3:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: jenkins-with-docker
+    container_name: jenkins-docker-compose-container3
+    ports:
+      - "8053:8080"
+      - "5053:5000"
+    volumes:
+      - jenkin-data:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
+    restart: unless-stopped
+
+volumes:
+  jenkin-data:
+    external: true

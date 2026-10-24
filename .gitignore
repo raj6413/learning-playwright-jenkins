@@ -11,3 +11,5 @@ node_modules/
 /videos/
 /screenshots/
 /traces/
+/playwright/.auth
+/.git
