@@ -201,3 +201,22 @@ pipeline {
         }
     }
 }
+
+// -----------------------
+//Implement QUALITY GATES SMOKE FAILED REWGRESSION WONT HAPPEN BUT REPORT WILL always cCOME
+        // stage('Smoke Tests - Quality Gate') {
+        //     steps {
+        //         sh 'npx playwright test --grep "@smoke"'
+        //     }
+        // }
+
+        // stage('Regression Tests') {
+        //     steps {
+        //         sh 'npx playwright test --grep "@regression"'
+        //     }
+        // }
+        // post {
+        // always {
+        //     archiveArtifacts(
+        //         artifacts: 'test-results/**, playwright-report/**',
+        //         allowEmptyArchive: true

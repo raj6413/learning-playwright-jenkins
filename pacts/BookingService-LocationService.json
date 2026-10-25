@@ -1,0 +1,59 @@
+{
+  "consumer": {
+    "name": "BookingService"
+  },
+  "interactions": [
+    {
+      "description": "a request for location 123",
+      "providerStates": [
+        {
+          "name": "location 123 exists"
+        }
+      ],
+      "request": {
+        "headers": {
+          "Accept": "application/json"
+        },
+        "method": "GET",
+        "path": "/location/api/123"
+      },
+      "response": {
+        "body": {
+          "city": "Pune",
+          "id": 123
+        },
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "matchingRules": {
+          "body": {
+            "$": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            }
+          }
+        },
+        "status": 200
+      }
+    }
+  ],
+  "metadata": {
+    "pact-js": {
+      "version": "17.1.4"
+    },
+    "pactRust": {
+      "ffi": "0.5.8",
+      "models": "1.3.16"
+    },
+    "pactSpecification": {
+      "version": "3.0.0"
+    }
+  },
+  "provider": {
+    "name": "LocationService"
+  }
+}
