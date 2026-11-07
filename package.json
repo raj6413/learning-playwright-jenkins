@@ -42,7 +42,9 @@
     "qe:rag:index": "tsx RAG/utils/qe-rag.ts index",
     "qe:rag:ask": "tsx RAG/utils/qe-rag.ts ask",
     "qe:orchestrator:rag": "npm run qe:orchestrator && npm run qe:rag:index",
-    "qe:code-review": "tsx qe-code-reviewer-agent/utils/qe-playwright-code-reviewer.ts"
+    "qe:code-review": "tsx qe-code-reviewer-agent/utils/qe-playwright-code-reviewer.ts",
+    "qe:agentic": "tsx qe-agentic-controller/utils/qe-agentic-controller.ts",
+    "qe:mcp:playwright": "tsx qe-playwright-mcp-agent/utils/qe-playwright-mcp-agent.ts"
   },
   "keywords": [],
   "author": "",
@@ -66,6 +68,7 @@
     "tsx": "^4.23.15"
   },
   "dependencies": {
+    "@modelcontextprotocol/client": "^2.4.0",
     "allure-playwright": "^3.10.2"
   }
 }
