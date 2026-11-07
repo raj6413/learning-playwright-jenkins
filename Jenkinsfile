@@ -177,6 +177,20 @@ pipeline {
             echo 'Tests Failed'
         }
         always {
+        //     script {
+        //     if (fileExists('test-results/agent-results.json')) {
+        //         sh 'npm run qe:history'
+        //         sh 'npm run qe:intelligence'
+        //         sh 'QE_GATE_MODE=warn npm run qe:gate'
+        //     } else {
+        //         echo 'Playwright JSON report not found; skipping QE intelligence.'
+        //     }
+        // }
+
+        // archiveArtifacts(
+        //     artifacts: 'test-results/qe-run-history.jsonl,test-results/qe-failure-intelligence.md,test-results/agent-results.json',
+        //     allowEmptyArchive: true
+        // )
             allure(
             includeProperties: false,
             jdk: '',
