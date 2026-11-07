@@ -1,0 +1,17 @@
+{
+  "thresholds": {
+    "maxP95Ms": 1000,
+    "maxP99Ms": 2000,
+    "maxErrorRatePct": 1,
+    "minThroughputRps": 10,
+    "maxRegressionPct": 20,
+    "slowEndpointP95Ms": 1500,
+    "maxSlowEndpointErrorRatePct": 2
+  },
+  "analysis": {
+    "compareBaseline": true,
+    "analyzeK6": true,
+    "analyzeJMeter": true,
+    "topSlowEndpoints": 10
+  }
+}

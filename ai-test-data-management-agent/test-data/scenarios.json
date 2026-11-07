@@ -1,0 +1,54 @@
+{
+  "scenarios": [
+    {
+      "id": "TC-CUST-001",
+      "name": "Valid adult customer",
+      "field": "age",
+      "condition": "valid",
+      "expected": "18-100"
+    },
+    {
+      "id": "TC-CUST-002",
+      "name": "Below minimum age",
+      "field": "age",
+      "condition": "below_min",
+      "expected": "Less than 18"
+    },
+    {
+      "id": "TC-CUST-003",
+      "name": "Above maximum age",
+      "field": "age",
+      "condition": "above_max",
+      "expected": "Greater than 100"
+    },
+    {
+      "id": "TC-CUST-004",
+      "name": "Invalid email",
+      "field": "email",
+      "condition": "invalid_format",
+      "expected": "Invalid email format"
+    },
+    {
+      "id": "TC-CUST-005",
+      "name": "Duplicate customer email",
+      "field": "email",
+      "condition": "duplicate",
+      "expected": "Duplicate email"
+    },
+    {
+      "id": "TC-CUST-006",
+      "name": "Blocked customer",
+      "field": "status",
+      "condition": "specific_value",
+      "value": "BLOCKED",
+      "expected": "Customer is blocked"
+    },
+    {
+      "id": "TC-CUST-007",
+      "name": "Missing first name",
+      "field": "firstName",
+      "condition": "missing",
+      "expected": "Required field missing"
+    }
+  ]
+}

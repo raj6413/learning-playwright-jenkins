@@ -18,7 +18,7 @@ import { config } from './config/envConfig';
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
-  testDir: './tests',
+  testDir: './ai-utils',
   timeout: 30 * 1000,
   globalTimeout: 15 * 60 * 1000,  // 5 minutes
   /* Run tests in files in parallel */
@@ -31,14 +31,14 @@ export default defineConfig({
   // workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: process.env.CI ? 'blob'
-    : [["line"], ["html", { open: "never" }], ["allure-playwright"]],
+    : [["line"], ['list'], ['json', { outputFile: 'ai-utils/agent-results.json' }], ["html", { open: "never" }], ["allure-playwright"]],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('')`. */
     baseURL: config.ui.baseURL,
-    trace: "on",
+    trace: "retain-on-failure",
     video: "on",  
-    screenshot: "on",
+    screenshot: "only-on-failure",
     testIdAttribute: 'data-test'
   },
    

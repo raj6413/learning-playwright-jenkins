@@ -1,0 +1,36 @@
+{
+  "mappings": [
+    {
+      "source": "checkout-page.ts",
+      "tests": [
+        "tests/checkout.spec.ts"
+      ],
+      "requirements": [
+        "REQ-001"
+      ],
+      "reason": "Checkout page changes can affect valid and invalid cart checkout flows."
+    },
+    {
+      "source": "login-page.ts",
+      "tests": [
+        "tests/login.spec.ts",
+        "tests/checkout.spec.ts"
+      ],
+      "requirements": [
+        "REQ-002"
+      ],
+      "reason": "Login changes can affect authentication and authenticated checkout."
+    },
+    {
+      "source": "api-client.ts",
+      "tests": [
+        "tests/api/checkout-api.spec.ts",
+        "tests/checkout.spec.ts"
+      ],
+      "requirements": [
+        "REQ-001"
+      ],
+      "reason": "API client changes can affect checkout API and UI integration."
+    }
+  ]
+}

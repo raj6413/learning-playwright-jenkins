@@ -1,0 +1,14 @@
+{
+  "servers": {
+    "github": {
+      "type": "http",
+      "url": "https://api.githubcopilot.com/mcp/"
+    },
+    "qe-report-server": {
+      "type": "stdio",
+      "command": "node",
+      "args": ["--import", "tsx", "mcp/qe-mcp-server.ts"],
+      "cwd": "${workspaceFolder}"
+    }
+  }
+}

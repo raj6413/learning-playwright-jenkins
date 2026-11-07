@@ -1,0 +1,60 @@
+{
+  "version": "1.0",
+  "stopOnRequiredAgentFailure": false,
+  "agents": [
+    {
+      "name": "Test Impact Analysis",
+      "script": "qe:impact",
+      "enabled": true,
+      "required": true,
+      "reports": [
+        "ai-test-impact-analysis-agent/test-results/qe-impact-report.json"
+      ]
+    },
+    {
+      "name": "API Contract Intelligence",
+      "script": "qe:api-contract",
+      "enabled": true,
+      "required": true,
+      "reports": [
+        "api-contract-analysis-agent/test-results/qe-api-contract-report.json"
+      ]
+    },
+    {
+      "name": "Test Data Intelligence",
+      "script": "qe:test-data",
+      "enabled": true,
+      "required": true,
+      "reports": [
+        "ai-test-data-management-agent/test-results/qe-test-data-intelligence.json"
+      ]
+    },
+    {
+      "name": "Performance Intelligence",
+      "script": "qe:performance",
+      "enabled": true,
+      "required": false,
+      "reports": [
+        "perf-eng-intelligence-agent/test-results/qe-performance-intelligence.json"
+      ]
+    },
+    {
+      "name": "Failure Intelligence",
+      "script": "qe:intelligence",
+      "enabled": false,
+      "required": false,
+      "reports": [
+        "ai-utils/qe-run-history.jsonl"
+      ]
+    },
+    {
+      "name": "Release Readiness Quality Gate",
+      "script": "qe:gate",
+      "enabled": true,
+      "required": true,
+      "reports": [
+        "ai-utils/qe-release-readiness.json"
+      ]
+    }
+  ]
+}

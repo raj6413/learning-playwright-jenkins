@@ -1,0 +1,7 @@
+timeStamp,elapsed,label,responseCode,responseMessage,threadName,dataType,success,failureMessage,bytes,sentBytes,grpThreads,allThreads,URL,Latency,IdleTime,Connect
+1793900000000,250,GET /api/products,200,OK,Thread Group 1-1,json,true,,1200,300,5,10,https://example.test/api/products,220,0,20
+1793900001000,450,GET /api/products,200,OK,Thread Group 1-2,json,true,,1400,300,5,10,https://example.test/api/products,420,0,20
+1793900002000,1800,POST /api/checkout,200,OK,Thread Group 1-1,json,true,,1800,500,5,10,https://example.test/api/checkout,1750,0,30
+1793900003000,2200,POST /api/checkout,500,Internal Server Error,Thread Group 1-2,json,false,Server error,500,500,5,10,https://example.test/api/checkout,2150,0,30
+1793900004000,300,GET /api/cart,200,OK,Thread Group 1-1,json,true,,1000,200,5,10,https://example.test/api/cart,270,0,15
+1793900005000,350,GET /api/cart,200,OK,Thread Group 1-2,json,true,,1100,200,5,10,https://example.test/api/cart,320,0,15

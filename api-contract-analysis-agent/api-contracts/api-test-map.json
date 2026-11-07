@@ -1,0 +1,23 @@
+{
+  "mappings": [
+    {
+      "operationId": "createCheckout",
+      "tests": [
+        "tests/api/checkout-api.spec.ts",
+        "tests/checkout.spec.ts"
+      ],
+      "requirements": [
+        "REQ-001"
+      ]
+    },
+    {
+      "operationId": "getCart",
+      "tests": [
+        "tests/api/cart-api.spec.ts"
+      ],
+      "requirements": [
+        "REQ-002"
+      ]
+    }
+  ]
+}

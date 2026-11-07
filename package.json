@@ -23,13 +23,33 @@
     "report": "npx playwright show-report",
     "pact:consumer": "playwright test --config=playwright.pact.config.ts consumer.pact.spec.ts",
     "pact:provider": "playwright test --config=playwright.pact.config.ts provider.pact.spec.ts",
-    "pact:demo": "npm run pact:consumer && npm run pact:provider"
+    "pact:demo": "npm run pact:consumer && npm run pact:provider",
+    "qe:failure-agent": "tsx utils/qe-failure-agent.ts",
+    "qe:triage": "tsx utils/qe-failure-triage.ts",
+    "qe:analysis": "tsx utils/qe-ai-analysis.ts",
+    "qe:history": "tsx utils/qe-run-history.ts",
+    "qe:intelligence": "tsx utils/qe-failure-intelligence.ts",
+    "qe:gate": "tsx utils/qe-quality-gate.ts",
+    "qe:test-design": "tsx utils/ai-test-design/qe-test-design-agent.ts",
+    "qe:test-to-code": "tsx utils/ai-test-design/qe-test-to-code.ts",
+    "qe:impact": "tsx ai-test-impact-analysis-agent/qe-impact-analysis.ts",
+    "qe:api-contract": "tsx api-contract-analysis-agent/utils/qe-api-contract-agent.ts",
+    "qe:test-data": "tsx ai-test-data-management-agent/utils/qe-test-data-agent.ts",
+    "qe:performance": "tsx perf-eng-intelligence-agent/utils/qe-performance-agent.ts",
+    "qe:orchestrator": "tsx qe-intelligence-orchestrator/utils/qe-orchestrator.ts",
+    "qe:ai-eval": "tsx qe-ai-agent-evaluation/utils/qe-ai-evaluation.ts",
+    "qe:mcp": "node --import tsx mcp/qe-mcp-server.ts",
+    "qe:rag:index": "tsx RAG/utils/qe-rag.ts index",
+    "qe:rag:ask": "tsx RAG/utils/qe-rag.ts ask",
+    "qe:orchestrator:rag": "npm run qe:orchestrator && npm run qe:rag:index",
+    "qe:code-review": "tsx qe-code-reviewer-agent/utils/qe-playwright-code-reviewer.ts"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@axe-core/playwright": "^4.14.0",
+    "@modelcontextprotocol/server": "^2.4.0",
     "@pact-foundation/pact": "^17.1.4",
     "@playwright/test": "^1.61.0",
     "@types/express": "^5.0.6",
@@ -42,7 +62,8 @@
     "eslint": "^10.8.0",
     "eslint-config-prettier": "^10.1.8",
     "express": "^5.3.0",
-    "prettier": "^3.9.6"
+    "prettier": "^3.9.6",
+    "tsx": "^4.23.15"
   },
   "dependencies": {
     "allure-playwright": "^3.10.2"

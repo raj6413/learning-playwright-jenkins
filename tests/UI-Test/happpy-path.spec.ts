@@ -39,7 +39,7 @@ test.describe("with Login", () => {
   });
 });
 
-test.describe.only("with storage state", () => {
+test.describe("with storage state", () => {
   // test.use({ storageState: ".auth/cutomer01.json" });
   test.beforeEach(async ({page})=>{
     await page.goto("/");

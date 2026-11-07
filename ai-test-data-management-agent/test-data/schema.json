@@ -1,0 +1,61 @@
+{
+  "entity": "Customer",
+  "fields": {
+    "customerId": {
+      "type": "string",
+      "required": true,
+      "unique": true,
+      "sensitive": false
+    },
+    "firstName": {
+      "type": "string",
+      "required": true,
+      "minLength": 2,
+      "sensitive": false
+    },
+    "lastName": {
+      "type": "string",
+      "required": true,
+      "minLength": 2,
+      "sensitive": false
+    },
+    "email": {
+      "type": "string",
+      "required": true,
+      "unique": true,
+      "format": "email",
+      "sensitive": true
+    },
+    "phone": {
+      "type": "string",
+      "required": true,
+      "format": "phone",
+      "sensitive": true
+    },
+    "age": {
+      "type": "number",
+      "required": true,
+      "min": 18,
+      "max": 100,
+      "sensitive": false
+    },
+    "status": {
+      "type": "string",
+      "required": true,
+      "allowedValues": ["ACTIVE", "INACTIVE", "BLOCKED"],
+      "sensitive": false
+    },
+    "password": {
+      "type": "string",
+      "required": true,
+      "minLength": 8,
+      "sensitive": true
+    },
+    "country": {
+      "type": "string",
+      "required": true,
+      "allowedValues": ["India", "USA", "UK"],
+      "sensitive": false
+    }
+  }
+}
